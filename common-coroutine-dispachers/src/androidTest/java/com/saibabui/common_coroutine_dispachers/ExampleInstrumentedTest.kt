@@ -1,4 +1,4 @@
-package com.saibabui.coroutine_dispachers
+package com.saibabui.common_coroutine_dispachers
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.saibabui.coroutine_dispachers.test", appContext.packageName)
+        assertEquals("com.saibabui.common_coroutine_dispachers.test", appContext.packageName)
     }
 }
