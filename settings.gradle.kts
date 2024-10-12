@@ -21,6 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Spendit"
 include(":sample-app")
-include(":android-design-library")
 include(":base")
-include(":coroutine-dispachers")
+include(":common-coroutine-dispachers")

@@ -1,4 +1,4 @@
-package com.saibabui.coroutine_dispachers
+package com.saibabui.common_coroutine_dispachers
 
 import org.junit.Test
 
