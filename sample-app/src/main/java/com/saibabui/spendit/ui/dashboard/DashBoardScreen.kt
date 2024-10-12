@@ -21,7 +21,7 @@ fun DashBoardScreen(modifier: Modifier = Modifier) {
         contentAlignment = Alignment.Center,
     ) {
         Text(
-            text = "Sample component",
+            text = "Sample component ",
             color = MaterialTheme.colorScheme.onPrimaryContainer,
             style = MaterialTheme.typography.headlineMedium,
             fontSize = 40.sp
