@@ -45,8 +45,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.sha }}  # Use the commit SHA as the tag
-          release_name: "Release ${{ github.sha }}"  #  The release name
+          tag_name: v1.0.0 # Release tag
+          release_name: "Release v1.0.0"  #  The release name
           draft: false
           prerelease: false
 
