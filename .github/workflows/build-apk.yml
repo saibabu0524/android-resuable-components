@@ -37,16 +37,17 @@ jobs:
       - name: Verify APK path
         run: ls sample-app/build/outputs/apk/debug/
 
-      - name: Increment Version
-        id: increment_version
+      - name: Get Version
+        id: get_version
         run: |
           VERSION_FILE=VERSION
-          CURRENT_VERSION=$(cat $VERSION_FILE)
-          IFS='.' read -r major minor patch <<< "$CURRENT_VERSION"
-          patch=$((patch + 1))
-          NEW_VERSION="$major.$minor.$patch"
-          echo $NEW_VERSION > $VERSION_FILE
-          echo "::set-output name=new_version::$NEW_VERSION"
+          if [ -f $VERSION_FILE ]; then
+            VERSION=$(cat $VERSION_FILE)
+            echo "::set-output name=new_version::$VERSION"
+          else
+            echo "VERSION file not found!"
+            exit 1
+          fi
 
       - name: Create Release
         id: create_release
@@ -54,8 +55,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.increment_version.outputs.new_version }}
-          release_name: "Debug Release ${{ steps.increment_version.outputs.new_version }}"
+          tag_name: ${{ steps.get_version.outputs.new_version }}
+          release_name: "Debug Release ${{ steps.get_version.outputs.new_version }}"
           draft: false
           prerelease: true
 
@@ -67,3 +68,4 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: sample-app/build/outputs/apk/debug/sample-app-debug.apk
           asset_name: sample-app-debug.apk
+          asset_content_type: application/vnd.android.package-archive
