@@ -3,10 +3,10 @@ name: Build and Release APK
 on:
   push:
     branches:
-      - release
+      - release  # Trigger on pushes to the release branch
 
 permissions:
-  contents: write
+  contents: write  # Ensure the token can create a release
 
 jobs:
   build:
@@ -17,7 +17,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Set up JDK 17 (adjust if your project requires a different version)
+      # Step 2: Set up JDK 17
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
@@ -38,18 +38,23 @@ jobs:
       - name: Build APK
         run: ./gradlew assembleRelease
 
-      # Step 5: Upload the APK as a release asset to GitHub
+      # Step 5: Verify APK path (adjust based on your build)
+      - name: Verify APK path
+        run: ls app/build/outputs/apk/release/
+
+      # Step 6: Create a GitHub Release
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v1.0.0 # Release tag
-          release_name: "Release v1.0.0"  #  The release name
+          tag_name: v1.0.0
+          release_name: "Release v1.0.0"
           draft: false
           prerelease: false
 
+      # Step 7: Upload APK to Release
       - name: Upload APK to Release
         uses: actions/upload-release-asset@v1
         env:
