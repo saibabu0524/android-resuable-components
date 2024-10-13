@@ -6,25 +6,22 @@ on:
       - release  # Trigger on pushes to the debug branch
 
 permissions:
-  contents: write  # Ensure the token can create a release
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Check out the repository
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Set up JDK 17
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
           java-version: '17'
 
-      # Step 3: Cache Gradle dependencies
       - name: Cache Gradle dependencies
         uses: actions/cache@v3
         with:
@@ -34,25 +31,22 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: ${{ runner.os }}-gradle
 
-      # Step 4: Build the APK (debug)
       - name: Build Debug APK
         run: ./gradlew assembleDebug
 
-      # Step 5: Verify APK path
       - name: Verify APK path
         run: ls sample-app/build/outputs/apk/debug/
 
-      # Step 6: Create a GitHub Release (Optional)
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v1.0.0-debug  # Replace with dynamic tag/version if needed
+          tag_name: v1.0.0-debug
           release_name: "Debug Release v1.0.0"
           draft: false
-          prerelease: true  # Mark as prerelease if appropriate
+          prerelease: true
 
       # Step 7: Upload Debug APK to Release
       - name: Upload APK to Release
