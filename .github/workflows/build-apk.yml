@@ -40,7 +40,7 @@ jobs:
 
       # Step 5: Verify APK path
       - name: Verify APK path
-        run: ls app/build/outputs/apk/debug/
+        run: ls sample-app/build/outputs/apk/debug/
 
       # Step 6: Create a GitHub Release (Optional)
       - name: Create Release
@@ -61,6 +61,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: app/build/outputs/apk/debug/app-debug.apk  # Adjust if needed
-          asset_name: app-debug.apk
+          asset_path: sample-app/build/outputs/apk/debug/app-debug.apk  # Adjust if needed
+          asset_name: sample-app-debug.apk
           asset_content_type: application/vnd.android.package-archive
