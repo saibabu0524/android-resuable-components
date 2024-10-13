@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.saibabui.coroutine_dispachers"
+    namespace = "com.saibabui.common_coroutine_dispachers"
     compileSdk = 34
 
     defaultConfig {
