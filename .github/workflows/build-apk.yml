@@ -1,9 +1,9 @@
-name: Build and Release APK
+name: Build and Upload APK
 
 on:
   push:
     branches:
-      - release  # Trigger on pushes to the release branch
+      - release  # Trigger on pushes to the debug branch
 
 permissions:
   contents: write  # Ensure the token can create a release
@@ -11,48 +11,56 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4.1.1
+      # Step 1: Check out the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Setup Java JDK
-        uses: actions/setup-java@v4.0.0
+      # Step 2: Set up JDK 17
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
         with:
+          distribution: 'zulu'
           java-version: '17'
-          distribution: 'adopt'
 
-      - name: Build with Gradle
-        run: ./gradlew build
-
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v4.0.0
+      # Step 3: Cache Gradle dependencies
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v3
         with:
-          name: Spendit
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: ${{ runner.os }}-gradle
 
-      # Step 5: Verify APK path (adjust based on your build)
+      # Step 4: Build the APK (debug)
+      - name: Build Debug APK
+        run: ./gradlew assembleDebug
+
+      # Step 5: Verify APK path
       - name: Verify APK path
-        run: ls app/build/outputs/apk/debug/app-debug.apk
+        run: ls app/build/outputs/apk/debug/
 
-      # Step 6: Create a GitHub Release
+      # Step 6: Create a GitHub Release (Optional)
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v1.0.0
-          release_name: "Release v1.0.0"
+          tag_name: v1.0.0-debug  # Replace with dynamic tag/version if needed
+          release_name: "Debug Release v1.0.0"
           draft: false
-          prerelease: false
+          prerelease: true  # Mark as prerelease if appropriate
 
-      # Step 7: Upload APK to Release
+      # Step 7: Upload Debug APK to Release
       - name: Upload APK to Release
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: app/build/outputs/apk/release/app-release.apk
-          asset_name: app-release.apk
+          asset_path: app/build/outputs/apk/debug/app-debug.apk  # Adjust if needed
+          asset_name: app-debug.apk
           asset_content_type: application/vnd.android.package-archive
