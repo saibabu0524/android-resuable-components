@@ -67,5 +67,3 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: sample-app/build/outputs/apk/debug/sample-app-debug.apk
           asset_name: sample-app-debug.apk
-          asset_content_type: application/vnd.android.package-archive
-          include: false
