@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+        <style name="Theme.App" parent="android:Theme.Material.Light.NoActionBar" />
+        <style name="Theme.App.SplashTheme" parent="Theme.SplashScreen">
+            <item name="windowSplashScreenBackground">@color/splash_screen_background</item>
+            <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+            <item name="windowSplashScreenAnimationDuration">2000</item>
+            <item name="postSplashScreenTheme">@style/Theme.Spendit</item>
+        </style>
     <style name="Theme.Spendit" parent="android:Theme.Material.Light.NoActionBar" />
 </resources>
