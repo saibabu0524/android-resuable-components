@@ -81,4 +81,7 @@ dependencies {
     kapt("androidx.hilt:hilt-compiler:1.1.0") // Match the version with hilt-work
     implementation("androidx.work:work-runtime-ktx:2.9.0")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+
+    //splash screen
+    implementation("androidx.core:core-splashscreen:1.0.1")
 }
