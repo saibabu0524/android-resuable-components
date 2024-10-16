@@ -9,6 +9,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.saibabui.spendit.navigation.AppNavigationComposable
 import com.saibabui.spendit.ui.theme.SpendItTheme
 import com.saibabui.spendit.ui.onboarding.OnBoardingScreen
 
@@ -20,25 +23,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             SpendItTheme {
                 Surface {
-                    OnBoardingScreen()
+                    val navController = rememberNavController()
+                    AppNavigationComposable(navController)
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun GreetingPreview() {
-    SpendItTheme {
-        Greeting("Android")
     }
 }
