@@ -9,9 +9,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/android-design-library" />
             <option value="$PROJECT_DIR$/base" />
-            <option value="$PROJECT_DIR$/coroutine-dispachers" />
+            <option value="$PROJECT_DIR$/common-coroutine-dispachers" />
             <option value="$PROJECT_DIR$/sample-app" />
           </set>
         </option>
