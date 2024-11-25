@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
+    id("com.google.gms.google-services")
+    id ("dagger.hilt.android.plugin")
 }
 
 android {
@@ -63,6 +65,8 @@ dependencies {
     implementation(libs.androidx.ui.text.google.fonts)
     implementation(project(":common-coroutine-dispachers"))
     implementation(project(":base"))
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.firebase.firestore.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -86,4 +90,48 @@ dependencies {
     //splash screen
     implementation("androidx.core:core-splashscreen:1.0.1")
     implementation ("com.google.accompanist:accompanist-systemuicontroller:0.27.0")
+
+    //finrebase
+    implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-storage")
+
+
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.9")
+    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
+
+
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
+    // Coroutine Lifecycle Scopes
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+
+    //bottom navigation
+    implementation ("androidx.compose.ui:ui:1.0.0")
+    implementation ("androidx.compose.material:material:1.0.0")
+    implementation ("androidx.navigation:navigation-compose:2.4.0-alpha01")
+
+    // Declare the dependency for the Cloud Firestore library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+
+    //downlodable fonts
+    implementation(libs.androidx.ui.text.google.fonts)
+
+    //ui-tooling
+    implementation ("androidx.compose.ui:ui-tooling:1.0.1")
+
+    //coil
+    implementation("io.coil-kt:coil-compose:2.6.0")
+    implementation(libs.androidx.appcompat)
+    // Lifecycle
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
+    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+
+    implementation(libs.androidx.navigation.compose)
 }
