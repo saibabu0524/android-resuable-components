@@ -4,32 +4,47 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.saibabui.spendit.navigation.AppNavigationComposable
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import com.saibabui.spendit.home.navigation.Home
+import com.saibabui.spendit.mainnavigation.RootNavigationGraph
 import com.saibabui.spendit.ui.theme.SpendItTheme
-import com.saibabui.spendit.ui.onboarding.OnBoardingScreen
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    private var currentUser: FirebaseUser? = null
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        auth = Firebase.auth
+        currentUser = auth.currentUser
         actionBar?.hide()
         setContent {
             SpendItTheme {
                 Surface {
-                    val navController = rememberNavController()
-                    AppNavigationComposable(navController)
+                    App(currentUser)
                 }
             }
         }
+    }
+}
+
+
+
+@Composable
+fun App(currentUser: FirebaseUser?) {
+    val navController = rememberNavController()
+
+    if (currentUser == null) {
+        RootNavigationGraph(navController)
+    } else {
+        Home()
     }
 }

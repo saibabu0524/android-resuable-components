@@ -1,4 +1,32 @@
 <resources>
     <string name="app_name">Spendit</string>
     <string name="brand_icon_cd">Brand Icon</string>
+    <string name="facebook_icon">Facebook icon</string>
+    <string name="google_icon">Google icon</string>
+    <string name="apple_icon">Apple icon</string>
+    <string name="sign_up_with_email">Sign up with Email</string>
+    <string name="get_order_meat_and_seafood_from_local_farmers_today_by_signing_up_for_our_app">Get order meat and seafood from local farmers today by signing up for our chat app!</string>
+    <string name="name">Name</string>
+    <string name="your_name">Your name</string>
+    <string name="your_email">Your email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="create_an_account">Create an account</string>
+    <string name="dashboard_message">Shop Meat and sea-food from our local farmers</string>
+    <string name="dashboard_short_description">Our app is perfect way to order meat and seafood from local farmers. Have fun shopping with friends and family.</string>
+    <string name="existing_account">Existing account?</string>
+    <string name="login">Login</string>
+    <string name="sign_up_with_mail">Sign up with mail</string>
+    <string name="or">OR</string>
+    <string name="log_in_to_chatbox">Log in to ChatBox</string>
+    <string name="welcome_back_sign_in_using_email_to_continue_us">Welcome back! Sign in using your social account or email to continue us</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="back_navigation_icon">Back navigation icon</string>
+    <string name="call">Call</string>
+    <string name="today">Today</string>
+    <string name="user_profile_image">User profile image</string>
+    <string name="back">back</string>
+    <string name="active_now">Active now</string>
+    <string name="profile_photo">Profile photo</string>
+    <string name="home">Home</string>
 </resources>
