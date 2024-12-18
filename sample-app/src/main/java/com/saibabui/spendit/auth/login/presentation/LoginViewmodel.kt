@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.saibabui.spendit.auth.login.data.LoginRepository
+import com.saibabui.spendit.auth.login.data.FirebaseLoginRepository
 import com.saibabui.spendit.auth.singup.domain.ValidateEmail
 import com.saibabui.spendit.auth.singup.domain.ValidatePassword
 import com.saibabui.spendit.auth.singup.presentation.model.CustomTextFieldState
@@ -25,7 +25,7 @@ import javax.inject.Inject
 class LoginViewmodel @Inject constructor(
     private val validateEmail: ValidateEmail = ValidateEmail(),
     private val validatePassword: ValidatePassword = ValidatePassword(),
-    private val loginRepository: LoginRepository,
+    private val firebaseLoginRepository: FirebaseLoginRepository,
     private val preferenceUtils: PreferenceUtils,
 ) : ViewModel() {
 
@@ -85,7 +85,7 @@ class LoginViewmodel @Inject constructor(
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 loginResponse.value = NetworkResult.Loading()
-                val result = loginRepository.loginWithEmailAndPassword(email, password)
+                val result = firebaseLoginRepository.loginWithEmailAndPassword(email, password)
                 loginResponse.value = if (result.data == true) {
                     NetworkResult.Success(true)
                 } else {

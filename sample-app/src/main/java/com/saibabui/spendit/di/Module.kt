@@ -18,8 +18,8 @@ import com.saibabui.spendit.home.contactscreen.data.ContactRepositoryImpl
 import com.saibabui.spendit.home.homescreen.GetChatRoomListUseCase
 import com.saibabui.spendit.home.profile.CreateChatRoomUseCase
 import com.saibabui.spendit.auth.FireBaseAuthRepository
-import com.saibabui.spendit.auth.login.data.LoginRepository
-import com.saibabui.spendit.auth.login.data.LoginRepositoryImpl
+import com.saibabui.spendit.auth.login.data.FirebaseLoginRepository
+import com.saibabui.spendit.auth.login.data.FirebaseLoginRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -95,6 +95,6 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideLoginRepository(): LoginRepository = LoginRepositoryImpl(auth = Firebase.auth)
+    fun provideLoginRepository(): FirebaseLoginRepository = FirebaseLoginRepositoryImpl(auth = Firebase.auth)
 
 }
