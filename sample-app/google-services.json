@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "16164830301",
-    "project_id": "spendit-bce30",
-    "storage_bucket": "spendit-bce30.appspot.com"
+    "project_number": "512891387894",
+    "project_id": "fresh-meat-9575b",
+    "storage_bucket": "fresh-meat-9575b.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:16164830301:android:fa29876c8f72ddb468e1b4",
+        "mobilesdk_app_id": "1:512891387894:android:6cdedbe1349ca5502951d7",
         "android_client_info": {
           "package_name": "com.saibabui.spendit"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBY3hokNXDOdY-IJX5Jdiw0nCpdpmJa1NI"
+          "current_key": "AIzaSyBzvUFh0DyPflonEeJYAX5GOXSRFB9qy9Y"
         }
       ],
       "services": {
