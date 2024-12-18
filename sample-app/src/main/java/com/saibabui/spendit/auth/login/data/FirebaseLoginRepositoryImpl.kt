@@ -5,7 +5,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.saibabui.spendit.common.NetworkResult
 import kotlinx.coroutines.tasks.await
 
-class LoginRepositoryImpl(override val auth: FirebaseAuth) : LoginRepository {
+class FirebaseLoginRepositoryImpl(override val auth: FirebaseAuth) : FirebaseLoginRepository {
     override suspend fun loginWithEmailAndPassword(
         email: String,
         password: String

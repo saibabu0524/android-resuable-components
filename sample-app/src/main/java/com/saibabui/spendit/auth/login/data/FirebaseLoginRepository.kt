@@ -3,7 +3,7 @@ package com.saibabui.spendit.auth.login.data
 import com.google.firebase.auth.FirebaseAuth
 import com.saibabui.spendit.common.NetworkResult
 
-interface LoginRepository {
+interface FirebaseLoginRepository {
 
     val auth: FirebaseAuth
 

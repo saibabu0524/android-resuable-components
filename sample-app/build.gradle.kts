@@ -117,9 +117,6 @@ dependencies {
     implementation ("androidx.compose.material:material:1.0.0")
     implementation ("androidx.navigation:navigation-compose:2.4.0-alpha01")
 
-    // Declare the dependency for the Cloud Firestore library
-    // When using the BoM, you don't specify versions in Firebase library dependencies
-
     //downlodable fonts
     implementation(libs.androidx.ui.text.google.fonts)
 
